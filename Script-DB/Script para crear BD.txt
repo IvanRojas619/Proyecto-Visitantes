@@ -1,0 +1,45 @@
+CREATE DATABASE control_visitantes;
+
+use  control_visitantes;
+
+/*Tabla de ppls*/
+CREATE TABLE ppl
+(Id_ppl int not null,
+Nombre varchar(50) not null,
+ApellidoPaterno varchar(50) not null,
+ApellidoMaterno varchar(50) not null,
+Edad decimal(2) not null,
+Sexo varchar(12) not null,
+
+PRIMARY KEY(Id_ppl)
+
+);
+
+
+/*TABLA DE VISITANTES*/
+
+CREATE TABLE visitantes
+(Id_visitante int not null,
+Nombre varchar(50) not null,
+ApellidoPaterno varchar(50) not null,
+ApellidoMaterno varchar(50) not null,
+Edad decimal(2) not null,
+Sexo varchar(12) not null,
+PRIMARY KEY(Id_visitante)
+);
+
+/*TABLA DE CONEXION VISITANTES_PPLS*/
+
+CREATE TABLE visitantes_ppls
+(
+Id_visita int not null,
+Id_visitante int not null ,
+Id_ppl int not null,
+parentesco varchar (50),
+primary key(Id_visita,Id_visitante,Id_ppl), /*Para que me deje seguir agregando registros de visitas
+llave compuesta
+*/
+FOREIGN KEY (Id_vviisitante) REFERENCES visitantes(Id_visitante),
+FOREIGN KEY (Id_ppl) REFERENCES ppl(Id_ppl)
+
+);
